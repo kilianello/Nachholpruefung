@@ -38,6 +38,11 @@
             <div class="Loch"></div> 
             <div class="Loch"></div> 
         </div>
-
+        <div id="Herzen">
+            ♥ ♥ ♥                                               /*Herzen als Leben*/
+        </div>
+        <div id="Punktestand">Highscore: 0</div>                /*Startwert des HS 0*/
+        <button id="start-button">Neues Spiel starten</button>  /*Neues Spiel*/
+        
     </body>
 </html>
