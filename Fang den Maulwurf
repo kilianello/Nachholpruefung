@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Fang den Maulwurf</title>
+    <head>                                  
+        <title>Fang den Maulwurf</title>    
         <style>
             #Spielbrett {                   /*Layout vom Spielbrett*/
                 width: 400px;
@@ -28,4 +28,16 @@
             }
         </style>
     </head>
+    <body>
+        <div id="Spielbrett">               /*Container*/
+            <div class="Loch"></div>        /*Loch 1 usw.*/
+            <div class="Loch"></div>        
+            <div class="Loch"></div> 
+            <div class="Loch"></div> 
+            <div class="Loch"></div> 
+            <div class="Loch"></div> 
+            <div class="Loch"></div> 
+        </div>
+
+    </body>
 </html>
