@@ -28,9 +28,9 @@
             }
         </style>
     </head>
-    <body>
-        <div id="Spielbrett">               /*Container*/
-            <div class="Loch"></div>        /*Loch 1 usw.*/
+    <body> 
+        <div id="Spielbrett">               
+            <div class="Loch"></div>        
             <div class="Loch"></div>        
             <div class="Loch"></div> 
             <div class="Loch"></div> 
@@ -39,10 +39,28 @@
             <div class="Loch"></div> 
         </div>
         <div id="Herzen">
-            ♥ ♥ ♥                                               /*Herzen als Leben*/
+            ♥ ♥ ♥                                              
         </div>
-        <div id="Punktestand">Highscore: 0</div>                /*Startwert des HS 0*/
-        <button id="start-button">Neues Spiel starten</button>  /*Neues Spiel*/
-        
+        <div id="Punktestand">Highscore: 0</div>                
+        <button id="start-button">Neues Spiel starten</button>  
+
+        <script> // enthält JavaScript-Code
+            // Anzahl Leben / Highscore
+            let Leben = 3; /* Variable für die Leben */
+            let Punkte = 0; /* Variable für die Punkte */
+            
+            //Document Object Model Elemente, Konstanten
+            const Löcher = Array.from(document.getElementsByClassName('Loch'));
+            const Herzen = document.getElementByID('Herzen');
+            const PunktestandAnzeige = document.getElementById('Punktestand');
+            const startButton = document.getElementById('start-button');
+
+            //Highscore im LS anzeigen
+            const gespeicherterPunktestand = localStorage.getItem('Punktestand'): //Methode vom LocalStorage
+            let Highscore = gespeicherterPunktestand ? parseInt(gespeicherterPunktestand) : 0; //setzt Highscore auf 0, Funktion für 0 oder Ganzzahl
+            if (gespeicherterPunktestand) {
+                console.log('Dein Highscore in diesem Spiel ist: ' + Highscore);
+            }
+    </script>
     </body>
 </html>
