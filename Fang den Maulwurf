@@ -39,7 +39,7 @@
             <div class="Loch"></div> 
         </div>
         <div id="Herzen">
-            ♥ ♥ ♥                                              
+            ♥ ♥ ♥                                               
         </div>
         <div id="Punktestand">Highscore: 0</div>                
         <button id="start-button">Neues Spiel starten</button>  
@@ -60,6 +60,53 @@
             let Highscore = gespeicherterPunktestand ? parseInt(gespeicherterPunktestand) : 0; //setzt Highscore auf 0, Funktion für 0 oder Ganzzahl
             if (gespeicherterPunktestand) {
                 console.log('Dein Highscore in diesem Spiel ist: ' + Highscore);
+            }
+
+            function aktualisiereLebenAnzeige() {
+                Herzen.textContent = '♥'.repeat(Leben);
+            }
+
+            function aktualisierePunktestandAnzeige() {
+                PunktestandAnzeige.textContent = 'Highscore: ' + Punkte;
+            }
+
+            function starteSpiel() {
+                Punkte = 0;
+                Leben = 3
+                aktualisiereLebenAnzeige();
+                aktualisierePunktestandAnzeige();
+                startButton.disabled = true;
+                startButton.textContent = 'Spiel läuft...';
+            }
+
+            function zeigeMaulwurf() {
+                const zufälligesLochIndex = Math.floor(Math.random() * Löcher.length) //zufällige Zahl 0-1, gibt die Anzahl der Elemente im Löcher-Array
+                const ausgewähltesLoch = Löcher[zufälligesLochIndex]                  // speichern des Lochs
+                ausgewähltesLoch.classList.add('aktiv');                              //Klassifiziert Loch als aktiv 
+
+                const versteckenTimeout = setTimeout(() => {
+                    ausgewähltesLoch.classList.remove('aktiv');
+                if (startButton.disabled) return;                                     //Beendet die Funktion, wenn das Spiel vorher beendet wurde
+                if (Leben > 0) {
+                  zeigeMaulwurf();                                                    // Ruft die Funktion zum Anzeigen des Maulwurfs erneut auf
+                } else {                                                              
+                    beendeSpiel();                                                    // Beendet Spiel wenn keine Leben übrig sind
+                }
+            }, Math.random() * 800 + 200);                           // zufällige Zeit zwischen 0,2 und 1
+
+            ausgewähltesLoch.addEventListener('click', () => {
+                if (ausgewähltesLoch.classList.contains('aktiv')) return; //prüfen ob ausgewähltes Loch aktiv ist
+                clearTimeout(versteckenTimeout); // Löscht den Timer, um das Verstecken des Maulwurfs zu stoppen
+                    ausgewähltesLoch.classList.remove('aktiv');     //entfernt Klasse aktiv vom Loch
+                Punkte += 5; //Erhöht Punktzahl um 5
+                aktualisierePunktestandAnzeige();
+            });
+        }
+
+        let countdown = 3;
+        const countdownInterval = setInterval(() => {
+            if (countdown > 0) {
+                console.log(countdown); //gibt Countdown-Wert aus
             }
     </script>
     </body>
